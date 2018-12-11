@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CQNotifManager.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     return YES;
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    
+    CGPoint location = [[[event allTouches] anyObject] locationInView:self.window];
+    CGRect statusBarFrame = [UIApplication sharedApplication].statusBarFrame;
+    
+    if (CGRectContainsPoint(statusBarFrame, location)) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CQStatusBarDidTapNotification object:nil];
+    }
 }
 
 

@@ -13,6 +13,7 @@
 		D9532E611ED6ADC300E90B0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9532E5F1ED6ADC300E90B0A /* Main.storyboard */; };
 		D9532E631ED6ADC300E90B0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9532E621ED6ADC300E90B0A /* Assets.xcassets */; };
 		D9532E661ED6ADC300E90B0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9532E641ED6ADC300E90B0A /* LaunchScreen.storyboard */; };
+		D97D7B2F21BF8CE200E29DCC /* CQNotifManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D97D7B2E21BF8CE200E29DCC /* CQNotifManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		D9532E621ED6ADC300E90B0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9532E651ED6ADC300E90B0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9532E671ED6ADC300E90B0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D97D7B2D21BF8CE200E29DCC /* CQNotifManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CQNotifManager.h; sourceTree = "<group>"; };
+		D97D7B2E21BF8CE200E29DCC /* CQNotifManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CQNotifManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 			children = (
 				D9532E5C1ED6ADC300E90B0A /* ViewController.h */,
 				D9532E5D1ED6ADC300E90B0A /* ViewController.m */,
+				D97D7B2D21BF8CE200E29DCC /* CQNotifManager.h */,
+				D97D7B2E21BF8CE200E29DCC /* CQNotifManager.m */,
 				D9532E591ED6ADC300E90B0A /* AppDelegate.h */,
 				D9532E5A1ED6ADC300E90B0A /* AppDelegate.m */,
 				D9532E5F1ED6ADC300E90B0A /* Main.storyboard */,
@@ -152,6 +157,7 @@
 			files = (
 				D9532E5E1ED6ADC300E90B0A /* ViewController.m in Sources */,
 				D9532E5B1ED6ADC300E90B0A /* AppDelegate.m in Sources */,
+				D97D7B2F21BF8CE200E29DCC /* CQNotifManager.m in Sources */,
 				D9532E581ED6ADC300E90B0A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

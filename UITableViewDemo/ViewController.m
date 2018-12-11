@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CQNotifManager.h"
 
 // 判断是否是iPhone X系列机型
 #define iPhoneX (([[UIApplication sharedApplication] statusBarFrame].size.height == 44.0f) ? (YES):(NO))
@@ -30,6 +31,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //------- 接收状态栏点击的通知 -------//
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleStatusBarTaped) name:CQStatusBarDidTapNotification object:nil];
     
     //------- tableView -------//
     self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -58,14 +62,23 @@
     titleLabel.font = [UIFont boldSystemFontOfSize:20];
 }
 
+#pragma mark - User Action
+
+// 处理用户点击状态栏的事件
+- (void)handleStatusBarTaped {
+    self.tableView.contentInset = UIEdgeInsetsZero;
+}
+
 #pragma mark - UIScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat tableHeaderViewHeight = CGRectGetHeight(self.tableView.tableHeaderView.bounds);
     // 修改导航栏透明度
-    self.naviView.alpha = offsetY / self.tableView.tableHeaderView.bounds.size.height;
+    self.naviView.alpha = offsetY / tableHeaderViewHeight;
     // 修改组头悬停位置
-    if (offsetY >= self.tableView.tableHeaderView.bounds.size.height) {
+    if (offsetY >= tableHeaderViewHeight) {
+        // 留出导航栏的位置
         self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATION_BAR_HEIGHT, 0, 0, 0);
     } else {
         self.tableView.contentInset = UIEdgeInsetsZero;
