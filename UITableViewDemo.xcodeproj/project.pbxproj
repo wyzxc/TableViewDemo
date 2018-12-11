@@ -13,11 +13,6 @@
 		D9532E611ED6ADC300E90B0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9532E5F1ED6ADC300E90B0A /* Main.storyboard */; };
 		D9532E631ED6ADC300E90B0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9532E621ED6ADC300E90B0A /* Assets.xcassets */; };
 		D9532E661ED6ADC300E90B0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9532E641ED6ADC300E90B0A /* LaunchScreen.storyboard */; };
-		D9532E6F1ED6D74400E90B0A /* UIView+frameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = D9532E6E1ED6D74400E90B0A /* UIView+frameAdjust.m */; };
-		D9532E761ED6D7E600E90B0A /* FirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9532E751ED6D7E600E90B0A /* FirstCell.m */; };
-		D999B6411ED91AF400D55A81 /* CQPointsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D999B6401ED91AF400D55A81 /* CQPointsHeaderView.m */; };
-		D999B6451ED91D2F00D55A81 /* CQPointsNaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = D999B6441ED91D2F00D55A81 /* CQPointsNaviView.m */; };
-		D9B6930A1ED7D7680010F2E1 /* CQScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B693091ED7D7680010F2E1 /* CQScrollMenuView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,16 +26,6 @@
 		D9532E621ED6ADC300E90B0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9532E651ED6ADC300E90B0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9532E671ED6ADC300E90B0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9532E6D1ED6D74400E90B0A /* UIView+frameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+frameAdjust.h"; sourceTree = "<group>"; };
-		D9532E6E1ED6D74400E90B0A /* UIView+frameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+frameAdjust.m"; sourceTree = "<group>"; };
-		D9532E741ED6D7E600E90B0A /* FirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCell.h; sourceTree = "<group>"; };
-		D9532E751ED6D7E600E90B0A /* FirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCell.m; sourceTree = "<group>"; };
-		D999B63F1ED91AF400D55A81 /* CQPointsHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQPointsHeaderView.h; sourceTree = "<group>"; };
-		D999B6401ED91AF400D55A81 /* CQPointsHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQPointsHeaderView.m; sourceTree = "<group>"; };
-		D999B6431ED91D2F00D55A81 /* CQPointsNaviView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQPointsNaviView.h; sourceTree = "<group>"; };
-		D999B6441ED91D2F00D55A81 /* CQPointsNaviView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQPointsNaviView.m; sourceTree = "<group>"; };
-		D9B693081ED7D7680010F2E1 /* CQScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQScrollMenuView.h; sourceTree = "<group>"; };
-		D9B693091ED7D7680010F2E1 /* CQScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQScrollMenuView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +58,8 @@
 		D9532E551ED6ADC300E90B0A /* UITableViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D9532E701ED6D79700E90B0A /* 工具及三方 */,
-				D9532E731ED6D7BA00E90B0A /* Model */,
-				D9532E721ED6D7B400E90B0A /* View */,
-				D9532E711ED6D7AC00E90B0A /* Controller */,
+				D9532E5C1ED6ADC300E90B0A /* ViewController.h */,
+				D9532E5D1ED6ADC300E90B0A /* ViewController.m */,
 				D9532E591ED6ADC300E90B0A /* AppDelegate.h */,
 				D9532E5A1ED6ADC300E90B0A /* AppDelegate.m */,
 				D9532E5F1ED6ADC300E90B0A /* Main.storyboard */,
@@ -94,62 +77,6 @@
 				D9532E571ED6ADC300E90B0A /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D9532E701ED6D79700E90B0A /* 工具及三方 */ = {
-			isa = PBXGroup;
-			children = (
-				D9532E6D1ED6D74400E90B0A /* UIView+frameAdjust.h */,
-				D9532E6E1ED6D74400E90B0A /* UIView+frameAdjust.m */,
-			);
-			name = "工具及三方";
-			sourceTree = "<group>";
-		};
-		D9532E711ED6D7AC00E90B0A /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D9532E5C1ED6ADC300E90B0A /* ViewController.h */,
-				D9532E5D1ED6ADC300E90B0A /* ViewController.m */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		D9532E721ED6D7B400E90B0A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D999B6421ED91CE600D55A81 /* 导航栏 */,
-				D999B6461ED921AB00D55A81 /* tableView的组头 */,
-				D9532E741ED6D7E600E90B0A /* FirstCell.h */,
-				D9532E751ED6D7E600E90B0A /* FirstCell.m */,
-				D9B693081ED7D7680010F2E1 /* CQScrollMenuView.h */,
-				D9B693091ED7D7680010F2E1 /* CQScrollMenuView.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		D9532E731ED6D7BA00E90B0A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		D999B6421ED91CE600D55A81 /* 导航栏 */ = {
-			isa = PBXGroup;
-			children = (
-				D999B6431ED91D2F00D55A81 /* CQPointsNaviView.h */,
-				D999B6441ED91D2F00D55A81 /* CQPointsNaviView.m */,
-			);
-			name = "导航栏";
-			sourceTree = "<group>";
-		};
-		D999B6461ED921AB00D55A81 /* tableView的组头 */ = {
-			isa = PBXGroup;
-			children = (
-				D999B63F1ED91AF400D55A81 /* CQPointsHeaderView.h */,
-				D999B6401ED91AF400D55A81 /* CQPointsHeaderView.m */,
-			);
-			name = "tableView的组头";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,8 +110,7 @@
 				TargetAttributes = {
 					D9532E521ED6ADC300E90B0A = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = YUSZJ893SU;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -225,13 +151,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9532E5E1ED6ADC300E90B0A /* ViewController.m in Sources */,
-				D9532E6F1ED6D74400E90B0A /* UIView+frameAdjust.m in Sources */,
-				D999B6411ED91AF400D55A81 /* CQPointsHeaderView.m in Sources */,
-				D9532E761ED6D7E600E90B0A /* FirstCell.m in Sources */,
 				D9532E5B1ED6ADC300E90B0A /* AppDelegate.m in Sources */,
-				D9B6930A1ED7D7680010F2E1 /* CQScrollMenuView.m in Sources */,
 				D9532E581ED6ADC300E90B0A /* main.m in Sources */,
-				D999B6451ED91D2F00D55A81 /* CQPointsNaviView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,12 +272,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YUSZJ893SU;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UITableViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KuaiJianKang.UITableViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -364,12 +288,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YUSZJ893SU;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = UITableViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KuaiJianKang.UITableViewDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

@@ -3,142 +3,112 @@
 //  UITableViewDemo
 //
 //  Created by 蔡强 on 2017/5/25.
-//  Copyright © 2017年 kuaijiankang. All rights reserved.
+//  Copyright © 2017年 caiqiang. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "UIView+frameAdjust.h"
-#import "FirstCell.h"
-#import "CQScrollMenuView.h"
-#import "CQPointsNaviView.h"
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,CQScrollMenuViewDelegate,CQPointsNaviViewDelegate>
+// 判断是否是iPhone X系列机型
+#define iPhoneX (([[UIApplication sharedApplication] statusBarFrame].size.height == 44.0f) ? (YES):(NO))
+// 状态栏高度
+#define STATUS_BAR_HEIGHT (iPhoneX ? 44.f : 20.f)
+// 导航栏高度
+#define NAVIGATION_BAR_HEIGHT (iPhoneX ? 88.f : 64.f)
 
-@property (nonatomic,strong) CQPointsNaviView *naviView;
-@property (nonatomic,strong) UIImageView *imageView;
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic,strong) UIView *naviView;
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UIImageView *imageView;
 
 @end
 
 @implementation ViewController
 
+#pragma mark - Life Cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    //------- 导航栏 -------//
-    self.naviView = [[CQPointsNaviView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 64)];
-    [self.view addSubview:self.naviView];
-    
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStylePlain];
+    //------- tableView -------//
+    self.tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.view sendSubviewToBack:self.tableView];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     
     //------- 表头 -------//
-    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 200)];
-    self.imageView.image = [UIImage imageNamed:@"head"];
-    
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    self.imageView.image = [UIImage imageNamed:@"tableview_header"];
     self.tableView.tableHeaderView = self.imageView;
-}
-
-#pragma mark - Delegate - 导航栏
-/** 导航栏返回按钮点击时回调 */
-- (void)naviView:(CQPointsNaviView *)naviView backButtonDidClick:(UIButton *)sender{
-    NSLog(@"返回上一页");
-}
-
-#pragma mark - Delegate - 菜单栏
-/** 菜单栏点击 */
-- (void)scrollMenuView:(CQScrollMenuView *)scrollMenuView clickedButtonAtIndex:(NSInteger)index{
-    NSLog(@"tag:%ld",index);
+    
+    //------- 导航栏 -------//
+    self.naviView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, NAVIGATION_BAR_HEIGHT)];
+    self.naviView.backgroundColor = [UIColor greenColor];
+    self.naviView.alpha = 0; // 默认透明
+    [self.view addSubview:self.naviView];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, STATUS_BAR_HEIGHT, self.view.frame.size.width, 44)];
+    [self.naviView addSubview:titleLabel];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"title";
+    titleLabel.font = [UIFont boldSystemFontOfSize:20];
 }
 
 #pragma mark - UIScrollView Delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
-    
     // 修改导航栏透明度
-    self.naviView.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:((offsetY - 64) / 150.0)];
-    
-    // 修改组头悬挂位置
-    if (offsetY >= 200) {
-        self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-    }else{
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    self.naviView.alpha = offsetY / self.tableView.tableHeaderView.bounds.size.height;
+    // 修改组头悬停位置
+    if (offsetY >= self.tableView.tableHeaderView.bounds.size.height) {
+        self.tableView.contentInset = UIEdgeInsetsMake(NAVIGATION_BAR_HEIGHT, 0, 0, 0);
+    } else {
+        self.tableView.contentInset = UIEdgeInsetsZero;
     }
-    
 }
 
 #pragma mark - UITableView Delegate & DataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *reuseID = @"reuseID";
-    FirstCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
-    if (cell == nil) {
-        cell = [[FirstCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseID];
+    static NSString *cellReuseID = @"cellReuseID";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseID];
     }
-    switch (indexPath.section) {
-        case 0:
-        {
-            cell.backgroundColor = [UIColor redColor];
-            cell.textLabel.text = @"1";
-        }
-            break;
-            
-        case 1:
-        {
-            cell.backgroundColor = [UIColor blueColor];
-            cell.textLabel.text = @"2";
-        }
-            break;
-            
-        case 2:
-        {
-            cell.backgroundColor = [UIColor orangeColor];
-        }
-            break;
-            
-        default:
-            break;
-    }
+    cell.textLabel.text = [NSString stringWithFormat:@"第%ld组", indexPath.section];
     return cell;
 }
 
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    CQScrollMenuView *buleView = [[CQScrollMenuView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    buleView.menuButtonClickedDelegate = self;
-    buleView.titleArray = @[@"标题1",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3",@"title2",@"title3"];
-    if (section == 0) {
-        buleView = nil;
-    }else{
-        if (section == 1) {
-            buleView.backgroundColor = [UIColor yellowColor];
-        }else{
-            buleView.backgroundColor = [UIColor purpleColor];
-        }
-        
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    static NSString *headerReuseID = @"headerReuseID";
+    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerReuseID];
+    if (!headerView) {
+        headerView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:headerReuseID];
     }
-    
-    return buleView;
+    headerView.textLabel.text = [NSString stringWithFormat:@"组头:第%ld组", section];
+    headerView.backgroundView.backgroundColor = [UIColor redColor];
+    return headerView;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+// 组头高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return 0;
     }
-    return 50;
+    return 60;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
 }
 
 @end
