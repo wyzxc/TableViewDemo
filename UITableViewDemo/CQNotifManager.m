@@ -3,7 +3,7 @@
 //  UITableViewDemo
 //
 //  Created by caiqiang on 2018/12/11.
-//  Copyright © 2018年 kuaijiankang. All rights reserved.
+//  Copyright © 2018年 caiqiang. All rights reserved.
 //
 
 #import "CQNotifManager.h"
