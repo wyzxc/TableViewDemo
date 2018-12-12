@@ -66,7 +66,13 @@
 
 // 处理用户点击状态栏的事件
 - (void)handleStatusBarTaped {
+    self.tableView.scrollEnabled = NO;
     self.tableView.contentInset = UIEdgeInsetsZero;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableView.contentOffset = CGPointZero;
+    } completion:^(BOOL finished) {
+        self.tableView.scrollEnabled = YES;
+    }];
 }
 
 #pragma mark - UIScrollView Delegate
